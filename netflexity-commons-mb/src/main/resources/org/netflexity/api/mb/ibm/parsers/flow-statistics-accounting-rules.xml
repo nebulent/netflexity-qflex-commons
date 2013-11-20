@@ -1,0 +1,175 @@
+<digester-rules>
+	<pattern value="WMQIStatisticsAccounting">
+  		<object-create-rule classname="org.netflexity.api.mb.ibm.IBMMbStatisticsAccounting"/>
+  		
+  		<!-- NOTE: call-method-rule gets called at the very end!!!!!-->
+		<set-properties-rule>
+        	<alias attr-name="RecordType" prop-name="recordType" />
+        	<alias attr-name="RecordCode" prop-name="recordCode" />
+     	</set-properties-rule>
+
+  		<pattern value="MessageFlow">
+    		<object-create-rule classname="org.netflexity.api.mb.ibm.IBMMbMessageFlowStatistics"/>
+     	
+     		<set-properties-rule>
+	        	<alias attr-name="BrokerLabel" prop-name="brokerLabel" />
+	        	<alias attr-name="BrokerUUID" prop-name="brokerUUID" />
+	        	<alias attr-name="ExecutionGroupName" prop-name="executionGroupName" />
+	        	<alias attr-name="ExecutionGroupUUID" prop-name="executionGroupUUID" />
+	        	<alias attr-name="MessageFlowName" prop-name="messageFlowName" />
+	        	<alias attr-name="StartDate" prop-name="startDate" />
+	        	<alias attr-name="StartTime" prop-name="startTime" />
+	        	<alias attr-name="EndDate" prop-name="endDate" />
+	        	<alias attr-name="EndTime" prop-name="endTime" />
+	        	<alias attr-name="AccountingOrigin" prop-name="accountingOrigin" />
+	     	</set-properties-rule>
+     		
+	        <call-method-rule methodname="setTotalElapsedTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalElapsedTime"/>
+	        
+	        <call-method-rule methodname="setMaximumElapsedTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MaximumElapsedTime"/>
+	        
+	        <call-method-rule methodname="setMinimumElapsedTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MinimumElapsedTime"/>
+	        
+	        <call-method-rule methodname="setTotalCPUTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalCPUTime"/>
+	        
+	        <call-method-rule methodname="setMaximumCPUTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MaximumCPUTime"/>
+	        
+	        <call-method-rule methodname="setMinimumCPUTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MinimumCPUTime"/>
+	        
+	        <call-method-rule methodname="setCpuTimeWaitingForInputMessage" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="CPUTimeWaitingForInputMessage"/>
+	        
+	        <call-method-rule methodname="setElapsedTimeWaitingForInputMessage" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="ElapsedTimeWaitingForInputMessage"/>
+	        
+	        <call-method-rule methodname="setTotalInputMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalInputMessages"/>
+	        
+	        <call-method-rule methodname="setTotalSizeOfInputMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalSizeOfInputMessages"/>
+	        
+	        <call-method-rule methodname="setMaximumSizeOfInputMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MaximumSizeOfInputMessages"/>
+	        
+	        <call-method-rule methodname="setMinimumSizeOfInputMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MinimumSizeOfInputMessages"/>
+	        
+	        <call-method-rule methodname="setNumberOfThreadsInPool" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="NumberOfThreadsInPool"/>
+	        
+	        <call-method-rule methodname="setTimesMaximumNumberofThreadsReached" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TimesMaximumNumberofThreadsReached"/>
+        
+        	<call-method-rule methodname="setTotalNumberOfMQErrors" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalNumberOfMQErrors"/>
+	        
+	        <call-method-rule methodname="setTotalNumberOfMessagesWithErrors" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalNumberOfMessagesWithErrors"/>
+	        
+	        <call-method-rule methodname="setTotalNumberOfErrorsProcessingMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalNumberOfErrorsProcessingMessages"/>
+	        
+	        <call-method-rule methodname="setTotalNumberOfTimeOutsWaitingForRepliesToAggregateMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalNumberOfTimeOutsWaitingForRepliesToAggregateMessages"/>
+	        
+	        <call-method-rule methodname="setTotalNumberOfCommits" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalNumberOfCommits"/>
+	        
+	        <call-method-rule methodname="setTotalNumberOfBackouts" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalNumberOfBackouts"/>
+    
+    		<set-next-rule methodname="addFlow"/>
+  		</pattern>
+  		
+  		<pattern value="Threads/ThreadStatistics">
+    		<object-create-rule classname="org.netflexity.api.mb.ibm.IBMMbThreadStatistics"/>
+     		
+	        <call-method-rule methodname="setThreadNumber" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="ThreadNumber"/>
+	        
+	        <call-method-rule methodname="setTotalNumberOfInputMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalNumberOfInputMessages"/>
+	        
+	        <call-method-rule methodname="setTotalElapsedTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalElapsedTime"/>
+	        
+	        <call-method-rule methodname="setTotalCPUTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalCPUTime"/>
+	        
+	        <call-method-rule methodname="setCpuTimeWaitingForInputMessage" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="CPUTimeWaitingForInputMessage"/>
+	        
+	        <call-method-rule methodname="setElapsedTimeWaitingForInputMessage" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="ElapsedTimeWaitingForInputMessage"/>
+
+	        <call-method-rule methodname="setTotalSizeOfInputMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalSizeOfInputMessages"/>
+	        
+	        <call-method-rule methodname="setMaximumSizeOfInputMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MaximumSizeOfInputMessages"/>
+	        
+	        <call-method-rule methodname="setMinimumSizeOfInputMessages" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MinimumSizeOfInputMessages"/>
+	            
+    		<set-next-rule methodname="addThread"/>
+    	</pattern>
+  		
+  		<pattern value="Nodes/NodeStatistics">
+    		<object-create-rule classname="org.netflexity.api.mb.ibm.IBMMbNodeStatistics"/>
+    
+    		<set-properties-rule>
+	        	<alias attr-name="Label" prop-name="label" />
+	        	<alias attr-name="Type" prop-name="type" />
+	     	</set-properties-rule>
+	     	
+	        <call-method-rule methodname="setTotalElapsedTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalElapsedTime"/>
+	        
+			<call-method-rule methodname="setMaximumElapsedTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MaximumElapsedTime"/>
+	        
+	        <call-method-rule methodname="setMinimumElapsedTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MinimumElapsedTime"/>
+	        
+	        <call-method-rule methodname="setTotalCPUTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="TotalCPUTime"/>
+	        
+	        <call-method-rule methodname="setMaximumCPUTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MaximumCPUTime"/>
+	        
+	        <call-method-rule methodname="setMinimumCPUTime" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="MinimumCPUTime"/>
+	        
+	        <call-method-rule methodname="setCountOfInvocations" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="CountOfInvocations"/>
+	        
+	        <call-method-rule methodname="setNumberOfInputTerminals" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="NumberOfInputTerminals"/>
+	            
+	        <call-method-rule methodname="setNumberOfOutputTerminals" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="NumberOfOutputTerminals"/>
+	        
+    		<set-next-rule methodname="addNode"/>
+    		
+    		<pattern value="TerminalStatistics">
+        		<object-create-rule classname="org.netflexity.api.mb.ibm.IBMMbTerminalStatistics"/>
+
+    			<set-properties-rule>
+		        	<alias attr-name="Label" prop-name="label" />
+		        	<alias attr-name="Type" prop-name="type" />
+		     	</set-properties-rule>
+     	
+		        <call-method-rule methodname="setCountOfInvocations" paramcount="1" />
+		        <call-param-rule paramnumber="0" attrname="CountOfInvocations"/>
+		        
+        		<set-next-rule methodname="addTerminal"/>
+      		</pattern>
+  		</pattern>
+	</pattern>
+</digester-rules>

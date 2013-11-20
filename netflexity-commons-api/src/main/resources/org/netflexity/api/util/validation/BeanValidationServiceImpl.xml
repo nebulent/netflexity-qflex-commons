@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC
+"-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+"http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+<form-validation>
+   <global>
+      <validator name="byte"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateByte"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.byte"/>
+
+      <validator name="short"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateShort"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.short"/>
+
+      <validator name="int"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateInt"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.int"/>
+
+      <validator name="long"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateLong"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.long"/>
+
+      <validator name="float"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateFloat"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.float"/>
+
+      <validator name="double"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateDouble"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.double"/>
+                 
+      <validator name="positive"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validatePositive"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 depends="required,int" 
+                 msg="errors.positive"/>
+                 
+      <validator name="required"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateRequired"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.required"/>
+       
+       <validator name="maxlength"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateMaxLength"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.maxlength"/>
+              
+       <validator name="minlength"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateMinLength"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.minlength"/>
+               
+       <validator name="email"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateEmail"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.email"/>
+       
+       <validator name="digit"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateDigits"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.digit"/>
+                    
+       <validator name="mask"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateMask"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.mask"/>
+   	   
+   	   <validator name="date"
+                 classname="org.netflexity.api.util.validation.ValidationRules"
+                 method="validateDate"
+                 methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                 msg="errors.date"/>
+   </global>
+</form-validation>

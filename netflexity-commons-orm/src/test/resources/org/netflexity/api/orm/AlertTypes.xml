@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC
+"-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+"http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+<form-validation>
+	<formset>
+      	<form name="AlertTypes">
+         	<field property="display_seq_no" depends="required,int">
+         	   	<arg0 key="display_seq_no"/>
+         	</field>
+      		<field  property="description" depends="required,maxlength">
+     	     	<arg0 key="description"/>
+     	     	<arg1 key="${var:maxlength}" resource="false"/>
+     	      	<var>
+             		<var-name>maxlength</var-name>
+             		<var-value>15</var-value>
+         		</var>
+     		</field>
+     	</form>
+   </formset>   
+</form-validation>

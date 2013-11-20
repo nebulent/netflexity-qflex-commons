@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<!-- SSH Object factory.-->
+	<bean id="sshSessionFactory" class="org.netflexity.api.ssh.jsch.pool.JschSessionFactoryImpl"/>
+	
+	<!-- SSH session pool factory.-->
+	<bean id="sshSessionPool" class="org.netflexity.springframework.commons.pool.KeyedObjectPoolFactoryBean">
+		<property name="objectFactory" ref="sshSessionFactory"/>
+		
+		<property name="maxActive" value="10"/>
+		<property name="maxIdle" value="0"/>
+		<property name="maxWait" value="10000"/>
+		<property name="timeBetweenEvictionRunsMillis" value="60000"/>
+		<property name="numTestsPerEvictionRun" value="1"/>
+		<property name="testOnBorrow" value="true"/>
+		<property name="testOnReturn" value="true"/>
+		<property name="testWhileIdle" value="true"/>
+		<!--
+		<property name="maxTotal" value="-1"/>
+		<property name="whenExhaustedAction" value="1"/>
+		<property name="minEvictableIdleTimeMillis" value="1800000"/>
+		-->
+	</bean>
+	
+	<!-- Jsch Ssh Manager for testing JschSshManager itself. -->
+	<bean id="jschSshSession" class="org.netflexity.api.ssh.jsch.JschSshManager">
+		<constructor-arg ref="sshSessionPool"/>
+		<constructor-arg value="nfxpartners.net"/>
+		<constructor-arg value="22"/>
+		<constructor-arg value="root"/>
+		<constructor-arg value="tn6Xu32z"/>
+		<constructor-arg value="/var/mqm/errors"/>
+	</bean>
+	
+	<!-- Jsch Ssh Manager for testing MqErrorFileManager. -->
+	<bean id="jschSshSession2" class="org.netflexity.api.ssh.jsch.JschSshManager">
+		<constructor-arg ref="sshSessionPool"/>
+		<constructor-arg value="nfxpartners.net"/>
+		<constructor-arg value="22"/>
+		<constructor-arg value="root"/>
+		<constructor-arg value="tn6Xu32z"/>
+		<constructor-arg value="/var/mqm"/>
+	</bean>
+	
+	<bean id="mqErrorFileManager" class="org.netflexity.api.ssh.jsch.mq.ibm.IBMMqErrorFileManager"/>
+</beans>

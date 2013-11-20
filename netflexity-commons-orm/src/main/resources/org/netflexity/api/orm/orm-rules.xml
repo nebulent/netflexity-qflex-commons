@@ -1,0 +1,116 @@
+<!--
+ Copyright 2004 The Apache Software Foundation.
+  
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+  
+      http://www.apache.org/licenses/LICENSE-2.0
+  
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!DOCTYPE digester-rules 
+  PUBLIC "-//Jakarta Apache //DTD digester-rules XML V1.0//EN" 
+    "http://jakarta.apache.org/commons/digester/dtds/digester-rules.dtd">
+
+<digester-rules>
+  	<pattern value="DATASOURCES">
+  		<object-create-rule classname="java.util.ArrayList"/>
+    	
+    	<pattern value="DATASOURCE">
+      		<object-create-rule classname="org.netflexity.api.orm.DatasourceMetadataImpl"/>
+      		
+      		<!-- NOTE: call-method-rule gets called at the very end!!!!!-->
+      		
+      		<!-- call-method-rule methodname="setName" paramcount="1" /> 
+			<call-param-rule paramnumber="0" attrname="NAME"/-->
+			
+			<set-properties-rule>
+            	<alias attr-name="NAME" prop-name="name" />
+         	</set-properties-rule>
+         
+	        <call-method-rule methodname="setClassName" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="CLASS"/>
+	        
+	        <pattern value="PROPERTY">
+	        	<call-method-rule methodname="addProperty" paramcount="2" /> 
+    			<call-param-rule paramnumber="0" attrname="KEY"/>
+    			<call-param-rule paramnumber="1" attrname="VALUE"/>
+	        </pattern>
+	        
+	        <pattern value="QUERY">
+	        	<call-method-rule methodname="addQuery" paramcount="2" /> 
+    			<call-param-rule paramnumber="0" attrname="NAME"/>
+    			<call-param-rule paramnumber="1"/>
+	        </pattern>
+	        
+      		<set-next-rule methodname="add"/>
+      
+      		<pattern value="RECORD">
+        		<object-create-rule classname="org.netflexity.api.orm.RecordMetadataImpl"/>
+        		
+    			<set-properties-rule>
+	            	<alias attr-name="NAME" prop-name="name" />
+	            	
+	            	<!-- Has to be called to map recordMetadata into datasourceMetadata -->
+            		<alias attr-name="CLASS" prop-name="className" />
+	         	</set-properties-rule>
+         	
+		        <call-method-rule methodname="setClassName" paramcount="1" />
+		        <call-param-rule paramnumber="0" attrname="CLASS"/>
+		        
+		        <call-method-rule methodname="setValidating" paramcount="1" />
+		        <call-param-rule paramnumber="0" attrname="VALIDATING"/>
+		        
+		        <pattern value="PROPERTY">
+		        	<call-method-rule methodname="addProperty" paramcount="2" /> 
+	    			<call-param-rule paramnumber="0" attrname="KEY"/>
+	    			<call-param-rule paramnumber="1" attrname="VALUE"/>
+		        </pattern>
+	        
+        		<set-next-rule methodname="addRecordMetadata"/>
+        		
+        		<pattern value="FIELD">
+	        		<object-create-rule classname="org.netflexity.api.orm.FieldMetadataImpl"/>
+
+        			<set-properties-rule>
+		            	<alias attr-name="NAME" prop-name="name" />
+		         	</set-properties-rule>
+         	
+			        <call-method-rule methodname="setJdbcType" paramcount="1" />
+			        <call-param-rule paramnumber="0" attrname="JDBC_TYPE"/>
+			        
+			        <call-method-rule methodname="setLength" paramcount="1" />
+			        <call-param-rule paramnumber="0" attrname="LENGTH"/>
+			        
+			        <call-method-rule methodname="setRequired" paramcount="1" />
+			        <call-param-rule paramnumber="0" attrname="REQUIRED"/>
+			        
+			        <call-method-rule methodname="setPrimaryKey" paramcount="1" />
+			        <call-param-rule paramnumber="0" attrname="PRIMARY_KEY"/>
+			        
+			        <call-method-rule methodname="setForeignKey" paramcount="1" />
+			        <call-param-rule paramnumber="0" attrname="FOREIGN_KEY"/>
+			        
+			        <pattern value="PROPERTY">
+			        	<call-method-rule methodname="addProperty" paramcount="2" /> 
+		    			<call-param-rule paramnumber="0" attrname="KEY"/>
+		    			<call-param-rule paramnumber="1" attrname="VALUE"/>
+	        		</pattern>
+	        		
+	        		<pattern value="NORMALIZE">
+			        	<call-method-rule methodname="addNormalizationRule" paramcount="1" /> 
+		    			<call-param-rule paramnumber="0" attrname="RULE"/>
+	        		</pattern>
+	        		
+	        		<set-next-rule methodname="addFieldMetadata"/>
+	      		</pattern>
+      		</pattern>
+    	</pattern>
+  	</pattern>
+</digester-rules>

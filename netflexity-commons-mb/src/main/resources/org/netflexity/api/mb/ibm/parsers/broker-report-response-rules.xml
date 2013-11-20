@@ -1,0 +1,54 @@
+<digester-rules>
+	<pattern value="Broker">
+  		<object-create-rule classname="org.netflexity.api.mb.ibm.IBMMbMessageBroker"/>
+  		
+  		<call-method-rule methodname="setBrokerUuid" paramcount="1" />
+        <call-param-rule paramnumber="0" attrname="uuid"/>
+        
+        <call-method-rule methodname="setBrokerName" paramcount="1" />
+        <call-param-rule paramnumber="0" attrname="label"/>
+        
+        <call-method-rule methodname="setBrokerVersion" paramcount="1" />
+        <call-param-rule paramnumber="0" attrname="version"/>
+        
+     	<pattern value="ReportResponse/ExecutionGroup">
+     		<object-create-rule classname="org.netflexity.api.mb.ibm.IBMMbExecGroup"/>
+	     	
+	     	<call-method-rule methodname="setExecGroupUuid" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="uuid"/>
+	        
+	        <call-method-rule methodname="setExecGroupName" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="label"/>
+      		
+      		<set-top-rule methodname="setBroker"/>
+	    	<set-next-rule methodname="addExecGroup"/>
+	    	
+	  	</pattern>
+	  	
+	  	<pattern value="ExecutionGroup">
+     		<object-create-rule classname="org.netflexity.api.mb.ibm.IBMMbExecGroup"/>
+	  		
+	  		<call-method-rule methodname="setExecGroupUuid" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="uuid"/>
+	        
+	        <call-method-rule methodname="setExecGroupName" paramcount="1" />
+	        <call-param-rule paramnumber="0" attrname="label"/>
+      		
+      		<set-top-rule methodname="setBroker"/>
+	    	<set-next-rule methodname="addExecGroup"/>
+	    	
+	  		<pattern value="ReportResponse/MessageFlow">
+	    		<object-create-rule classname="org.netflexity.api.mb.ibm.IBMMbMessageFlow"/>
+	     		
+	     		<call-method-rule methodname="setFlowUuid" paramcount="1" />
+		        <call-param-rule paramnumber="0" attrname="uuid"/>
+		        
+		        <call-method-rule methodname="setFlowName" paramcount="1" />
+		        <call-param-rule paramnumber="0" attrname="label"/>
+	     		
+	     		<set-top-rule methodname="setExecGroup"/>
+	    		<set-next-rule methodname="addMessageFlow"/>
+	  		</pattern>
+	  	</pattern>
+	</pattern>
+</digester-rules>

@@ -1,0 +1,19 @@
+<messages>
+	<message type="TEXT" JMSCorrelationID="123-345" JMSDeliveryMode="0"
+		JMSExpiration="0" JMSMessageID="messageid" JMSPriority="0"
+		JMSRedelivered="false" JMSTimestamp="0" JMSType="mytype">
+		<properties>
+			<property name="short" value="32767" type="SHORT" />
+			<property name="byte" value="127" type="BYTE" />
+			<property name="int" value="2147483647" type="INT" />
+			<property name="string" value="dGVzdA==" type="STRING" />
+			<property name="boolean" value="true" type="BOOLEAN" />
+			<property name="double" value="12.5" type="DOUBLE" />
+			<property name="long" value="9223372036854775807" type="LONG" />
+			<property name="float" value="12.5" type="FLOAT" />
+		</properties>
+		<content>cHVibGljIHZvaWQgcmVhZCgpIHRocm93cyBKTVNFeGNlcHRpb24sIFhNTFN0cmVhbUV4Y2VwdGlv
+bg==</content>
+	</message>
+
+</messages>

@@ -1,0 +1,28 @@
+<samples>
+	<!-- 
+		mqsichangeflowstats DWMB10 -s -c active -n none -t basic -b basic -o xml -g -j
+		mqsichangeflowstats DWMB10 -s -c active -n none -t basic -b basic -o xml -e default -j
+		mqsichangeflowstats DWMB10 -s -c active -n none -t basic -b basic -o xml -e default -f Flow1
+	-->
+	<Broker uuid='7e2c2f6c-0a01-0000-0080-bd5b2c1703c7' label='DWMB10' version='1'>
+		<AllExecutionGroups>
+			<Change>
+				<AllMessageFlows StatsSnapPublicationOn='active' StatsSnapNodeDataLevel='none' StatsSnapThreadDataLevel='basic' StatsSnapOutputFormat='xml' />
+			</Change>
+		</AllExecutionGroups>
+	</Broker>
+	<Broker uuid='7e2c2f6c-0a01-0000-0080-bd5b2c1703c7' label='DWMB10' version='1'>
+		<ExecutionGroup uuid='05cfef48-0a01-0000-0080-ad4c6b86410c' label='default'>
+			<Change>
+				<AllMessageFlows StatsSnapPublicationOn='active' StatsSnapNodeDataLevel='none' StatsSnapThreadDataLevel='basic' StatsSnapOutputFormat='xml' />
+			</Change>
+		</ExecutionGroup>
+	</Broker>
+	<Broker uuid='7e2c2f6c-0a01-0000-0080-bd5b2c1703c7' label='DWMB10' version='1'>
+		<ExecutionGroup uuid='05cfef48-0a01-0000-0080-ad4c6b86410c' label='default'>
+			<Change>
+				<MessageFlow uuid='Flow1' label='Flow1' StatsSnapPublicationOn='active' StatsSnapNodeDataLevel='none' StatsSnapThreadDataLevel='basic' StatsSnapOutputFormat='xml' />
+			</Change>
+		</ExecutionGroup>
+	</Broker>
+</samples>

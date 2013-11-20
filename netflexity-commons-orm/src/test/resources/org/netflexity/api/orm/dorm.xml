@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<DATASOURCES>
+	<DATASOURCE CLASS="org.netflexity.api.orm.datasource.db.JdbcDatasource" NAME="sample">
+		<!--JNDI_JDBC CLASS="org.netflexity.api.orm.datasource.db.JndiDatasource"-->
+		<!-- PROPERTY KEY="JNDI_NAME" VALUE="jdbc/sample" />
+		<PROPERTY KEY="DOUBLE_QUOTE_LITERAL" VALUE="Y" /-->
+		
+		<!--DEFAULT_JDBC-->
+		<!--Connection pool properties.-->
+		<PROPERTY KEY="DOUBLE_QUOTE_LITERAL" VALUE="Y" />
+        <PROPERTY KEY="JDBC_DRIVER_CLASS" VALUE="com.mysql.jdbc.Driver" />
+        <PROPERTY KEY="JDBC_URL" VALUE="jdbc:mysql://localhost/qflex?autoReconnect=true&amp;user=root&amp;password=root" />
+        <PROPERTY KEY="JDBC_TEST_SQL" VALUE="select 1" />
+        <PROPERTY KEY="DBCP_URL" VALUE="jdbc:apache:commons:dbcp:qflex" />
+        <PROPERTY KEY="CONNECTION_POOL_NAME" VALUE="qflex" />
+        <PROPERTY KEY="CONNECTION_AUTO_COMMIT" VALUE="false" />
+        <PROPERTY KEY="CONNECTION_READONLY" VALUE="false" />
+        <PROPERTY KEY="MAX_ACTIVE_CONNECTIONS" VALUE="2" />
+        <PROPERTY KEY="WHEN_EXHAUSTED_ACTION" VALUE="1" />
+        <PROPERTY KEY="MAX_WAIT" VALUE="-1" />
+        <PROPERTY KEY="MAX_IDLE" VALUE="0" />
+        <PROPERTY KEY="TEST_ON_BORROW" VALUE="true" />
+        <PROPERTY KEY="TEST_ON_RETURN" VALUE="false" />
+        <PROPERTY KEY="TIME_BETWEEN_EVICTION_RUNS" VALUE="10000" />
+        <PROPERTY KEY="NUMBER_OF_TESTS_PER_EVICTION" VALUE="2" />
+        <PROPERTY KEY="MIN_EVICTABLE_IDLE" VALUE="5000" />
+        <PROPERTY KEY="TEST_WHILE_IDLE" VALUE="false" />
+        
+		<RECORD NAME="alert_status_types" CLASS="org.netflexity.api.orm.AlertStatusTypes" VALIDATING="N">
+			<FIELD NAME="alert_status_type_id" PRIMARY_KEY="Y" REQUIRED="Y" JDBC_TYPE="-5" />
+			<FIELD NAME="display_seq_no" REQUIRED="Y" JDBC_TYPE="4" />
+			<FIELD NAME="description" REQUIRED="Y" LENGTH="64" JDBC_TYPE="12">
+				<NORMALIZE TYPE="TRIM" />
+				<NORMALIZE TYPE="TRUNCATE_SILENTLY" />
+			</FIELD>
+		</RECORD>
+		<RECORD NAME="alert_types" CLASS="org.netflexity.api.orm.AlertTypes" VALIDATING="Y">
+			<FIELD NAME="alert_type_id" PRIMARY_KEY="Y" REQUIRED="Y" JDBC_TYPE="-5" />
+			<FIELD NAME="display_seq_no" REQUIRED="Y" JDBC_TYPE="4" />
+			<FIELD NAME="description" REQUIRED="Y" LENGTH="64" JDBC_TYPE="12">
+				<NORMALIZE TYPE="TRIM" />
+				<NORMALIZE TYPE="TRUNCATE_SILENTLY" />
+			</FIELD>
+		</RECORD>
+		
+		<RECORD NAME="monitors_alert_types" CLASS="org.netflexity.api.orm.MonitorsAlertType" VALIDATING="N">
+			<FIELD NAME="monitors_alert_types_id" PRIMARY_KEY="Y"  REQUIRED="Y" JDBC_TYPE="-5" />
+			<FIELD NAME="monitor_id"   REQUIRED="N" JDBC_TYPE="-5" />
+			<FIELD NAME="monitor_template_id"   REQUIRED="N" JDBC_TYPE="-5" />
+			<FIELD NAME="alert_type_id"   REQUIRED="Y" JDBC_TYPE="-5" />
+			<FIELD NAME="modified_tm"   REQUIRED="N" JDBC_TYPE="-5" />
+			<FIELD NAME="modified_by"   REQUIRED="N" LENGTH="32" JDBC_TYPE="12">
+				<NORMALIZE TYPE="TRIM" />
+				<NORMALIZE TYPE="TRUNCATE_SILENTLY" />
+			</FIELD>
+		</RECORD>
+		
+		<RECORD NAME="config_attribute_types" CLASS="org.netflexity.api.orm.ConfigAttributeType" VALIDATING="N">
+			<FIELD NAME="config_attribute_type_id" PRIMARY_KEY="Y"  REQUIRED="Y" JDBC_TYPE="-5" />
+			<FIELD NAME="config_object_type_id"   REQUIRED="Y" JDBC_TYPE="-5" />
+			<FIELD NAME="display_seq_no"   REQUIRED="Y" JDBC_TYPE="4" />
+			<FIELD NAME="description"   REQUIRED="Y" LENGTH="32" JDBC_TYPE="12">
+				<NORMALIZE TYPE="TRIM" />
+				<NORMALIZE TYPE="TRUNCATE_SILENTLY" />
+			</FIELD>
+			<FIELD NAME="mq_attribute_id"   REQUIRED="Y" JDBC_TYPE="4" />
+			<FIELD NAME="data_type"   REQUIRED="Y" JDBC_TYPE="4" />
+			<FIELD NAME="immutable"   REQUIRED="Y" LENGTH="1" JDBC_TYPE="1">
+				<NORMALIZE TYPE="TRIM" />
+				<NORMALIZE TYPE="TRUNCATE_SILENTLY" />
+			</FIELD>
+			<FIELD NAME="required_for_change"   REQUIRED="Y" LENGTH="1" JDBC_TYPE="1">
+				<NORMALIZE TYPE="TRIM" />
+				<NORMALIZE TYPE="TRUNCATE_SILENTLY" />
+			</FIELD>
+		</RECORD>
+		
+		<QUERY NAME="numberOfAlertTypes">
+			<![CDATA[
+			select count(*) from ALERT_TYPES
+			]]>
+		</QUERY>
+		<QUERY NAME="alertTypeOne">
+			<![CDATA[
+			select at.* from ALERT_TYPES at where at.alert_type_id = ?
+			]]>
+		</QUERY>
+	</DATASOURCE>
+</DATASOURCES>

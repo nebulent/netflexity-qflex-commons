@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<!-- SSH Object factory.-->
+	<bean id="sshSessionFactory" class="org.netflexity.api.ssh.jsch.pool.JschSessionFactoryImpl"/>
+	
+	<!-- SSH session pool factory.-->
+	<bean id="sshSessionPool" class="org.netflexity.springframework.commons.pool.KeyedObjectPoolFactoryBean">
+		<property name="objectFactory" ref="sshSessionFactory"/>
+		
+		<property name="maxActive" value="10"/>
+		<property name="maxIdle" value="0"/>
+		<property name="maxWait" value="10000"/>
+		<property name="timeBetweenEvictionRunsMillis" value="60000"/>
+		<property name="numTestsPerEvictionRun" value="1"/>
+		<property name="testOnBorrow" value="true"/>
+		<property name="testOnReturn" value="true"/>
+		<property name="testWhileIdle" value="true"/>
+		<!--
+		<property name="maxTotal" value="-1"/>
+		<property name="whenExhaustedAction" value="1"/>
+		<property name="minEvictableIdleTimeMillis" value="1800000"/>
+		-->
+	</bean>
+</beans>

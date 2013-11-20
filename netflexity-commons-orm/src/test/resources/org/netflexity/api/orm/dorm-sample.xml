@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATASOURCES>
+	<DATASOURCE NAME="my" CLASS="org.netflexity.api.orm.DatasourceMetadataImpl">
+		<PROPERTY KEY="one" VALUE="1"/>
+		
+		<RECORD NAME="myTable" VALIDATING="N" CLASS="org.netflexity.api.orm.RecordMetadataImpl">
+			<FIELD NAME="my_pk" LENGTH="255" JDBC_TYPE="1" REQUIRED="Y" PRIMARY_KEY="Y">
+				<PROPERTY KEY="one" VALUE="1"/>
+				<NORMALIZE RULE="CAPITALIZE"/>
+			</FIELD>
+			<FIELD NAME="my_fk" JDBC_TYPE="2" REQUIRED="Y" FOREIGN_KEY="Y">
+				<PROPERTY KEY="TARGET-DATASOURCE" VALUE="my"/>
+				<PROPERTY KEY="TARGET-RECORD" VALUE="fkTable"/>
+				<PROPERTY KEY="TARGET-FIELD" VALUE="fkColumn"/>
+				<NORMALIZE RULE="CAPITALIZE"/>
+			</FIELD>
+			<FIELD NAME="my_string_col" LENGTH="25" JDBC_TYPE="1" REQUIRED="N">
+				<PROPERTY KEY="one" VALUE="1"/>
+				<NORMALIZE RULE="TRIM"/>
+				<NORMALIZE RULE="CAPITALIZE"/>
+			</FIELD>
+			<PROPERTY KEY="one" VALUE="1"/>
+		</RECORD>
+		
+		<RECORD NAME="myTable2" VALIDATING="N" CLASS="org.netflexity.api.orm.RecordMetadataImpl">
+			<FIELD NAME="my_pk2" LENGTH="255" JDBC_TYPE="1" REQUIRED="Y" PRIMARY_KEY="Y">
+				<PROPERTY KEY="two" VALUE="1"/>
+				<NORMALIZE RULE="CAPITALIZE"/>
+			</FIELD>
+			<FIELD NAME="my_fk2" JDBC_TYPE="2" REQUIRED="Y" FOREIGN_KEY="Y">
+				<PROPERTY KEY="TARGET-DATASOURCE" VALUE="my"/>
+				<PROPERTY KEY="TARGET-RECORD" VALUE="fkTable2"/>
+				<PROPERTY KEY="TARGET-FIELD" VALUE="fkColumn2"/>
+				<NORMALIZE RULE="CAPITALIZE"/>
+			</FIELD>
+			<FIELD NAME="my_string_col2" LENGTH="25" JDBC_TYPE="1" REQUIRED="N">
+				<PROPERTY KEY="two" VALUE="1"/>
+				<NORMALIZE RULE="TRIM"/>
+				<NORMALIZE RULE="CAPITALIZE"/>
+			</FIELD>
+			<PROPERTY KEY="two" VALUE="1"/>
+		</RECORD>
+		
+		<QUERY NAME="myQuery">
+			<![CDATA[
+			select * from table
+			]]>
+		</QUERY>
+	</DATASOURCE>
+</DATASOURCES>

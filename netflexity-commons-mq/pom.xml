@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>com.netflexity.software.qflex</groupId>
+		<artifactId>commons</artifactId>
+		<version>1.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.netflexity.software.qflex.commons</groupId>
+	<artifactId>netflexity-commons-mq</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0</version>
+	<name>Netflexity Solutions, Inc. :: Qflex :: Commons :: IBM Websphere MQ</name>
+	<url>http://www.netflexity.com</url>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>netflexity-commons-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<!--IBM jars.-->
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>mq</artifactId>
+			<version>${com.ibm.mq.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>mqjms</artifactId>
+			<version>${com.ibm.mqjms.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>mq.pcf</artifactId>
+			<version>${com.ibm.mq.pcf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>dhbcore</artifactId>
+			<version>${com.ibm.dhbcore.version}</version>
+		</dependency>
+		<!-- remove this dependency when using ver. 6-->
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>mq.jmqi</artifactId>
+			<version>${com.ibm.mq.jmqi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>mq.headers</artifactId>
+			<version>${com.ibm.mq.headers.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>mq.commonservices</artifactId>
+			<version>${com.ibm.mq.commonservices.version}</version>
+		</dependency>
+		<!--JMS 1.1-->
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>jms</artifactId>
+			<version>${jms.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.resource</groupId>
+			<artifactId>connector-api</artifactId>
+			<version>1.5</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
