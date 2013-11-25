@@ -16,15 +16,20 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Level;
+import org.apache.log4j.Priority;
 import org.netflexity.api.mq.MqChannel;
 import org.netflexity.api.mq.MqException;
 import org.netflexity.api.mq.MqQmanager;
 import org.netflexity.api.mq.MqQueue;
+import org.netflexity.api.mq.MqQueueStat;
+import org.netflexity.api.mq.MqTopic;
 import org.netflexity.api.mq.ibm.enums.AbstractMqAttributeEnum;
 import org.netflexity.api.mq.ibm.enums.MqAuthRecordAttributeEnum;
 import org.netflexity.api.mq.ibm.enums.MqChannelAttributeEnum;
 import org.netflexity.api.mq.ibm.enums.MqQmanagerAttributeEnum;
 import org.netflexity.api.mq.ibm.enums.MqQueueAttributeEnum;
+import org.netflexity.api.mq.ibm.enums.MqTopicAttributeEnum;
 import org.netflexity.api.util.StringConstants;
 
 import com.ibm.mq.MQException;
@@ -41,11 +46,6 @@ import com.ibm.mq.pcf.PCFException;
 import com.ibm.mq.pcf.PCFMessage;
 import com.ibm.mq.pcf.PCFMessageAgent;
 import com.ibm.mq.pcf.PCFParameter;
-import org.apache.log4j.Level;
-import org.apache.log4j.Priority;
-import org.netflexity.api.mq.MqQueueStat;
-import org.netflexity.api.mq.MqTopic;
-import org.netflexity.api.mq.ibm.enums.MqTopicAttributeEnum;
 
 /**
  * Class QflexUnixMqQmanager

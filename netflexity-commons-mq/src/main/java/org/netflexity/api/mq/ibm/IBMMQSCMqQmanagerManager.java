@@ -24,6 +24,7 @@ import org.netflexity.api.mq.MqException;
 import org.netflexity.api.mq.MqQmanager;
 import org.netflexity.api.mq.MqQueue;
 import org.netflexity.api.mq.MqQueueStat;
+import org.netflexity.api.mq.MqTopic;
 import org.netflexity.api.mq.ibm.enums.MqChannelAttributeEnum;
 import org.netflexity.api.mq.ibm.enums.MqQueueAttributeEnum;
 import org.netflexity.api.util.StringConstants;
@@ -34,7 +35,6 @@ import com.ibm.mq.MQMessage;
 import com.ibm.mq.MQPutMessageOptions;
 import com.ibm.mq.MQQueue;
 import com.ibm.mq.constants.CMQC;
-import org.netflexity.api.mq.MqTopic;
 
 /**
  * Class QflexZosMqQmanager

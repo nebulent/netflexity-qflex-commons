@@ -13,11 +13,17 @@ package org.netflexity.api.mq.ibm;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.netflexity.api.mq.ibm.enums.AbstractMqAttributeEnum;
 
 public abstract class AbstractIBMMqObject implements IBMMqObject {
 
-    protected Map<AbstractMqAttributeEnum, Object> attributes = new HashMap<AbstractMqAttributeEnum, Object>(50);
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7618850544516822354L;
+	
+	protected Map<AbstractMqAttributeEnum, Object> attributes = new HashMap<AbstractMqAttributeEnum, Object>(50);
 
     /* (non-Javadoc)
      * @see org.netflexity.api.mq.PcfMqObject#addAttribute(org.netflexity.api.mq.enums.AbstractMqAttributeEnum, java.lang.Object)
@@ -31,7 +37,7 @@ public abstract class AbstractIBMMqObject implements IBMMqObject {
      * @see org.netflexity.api.mq.PcfMqObject#getAttributes()
      */
     @Override
-    public Map getAttributes() {
+    public Map<AbstractMqAttributeEnum, Object> getAttributes() {
 	return Collections.unmodifiableMap(attributes);
     }
 

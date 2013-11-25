@@ -52,7 +52,7 @@ public interface MqQueue extends Serializable{
     /**
      * @return
      */
-    public String getDefBind();
+    public Integer getDefBind();
 
     /**
      * @return

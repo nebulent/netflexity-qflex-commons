@@ -38,17 +38,20 @@ public class IBMPCFMqQmanagerManagerTest extends PCFMessageAgent {
     private IBMPCFMqQmanagerManager manager;
     protected MQQueueManager connection;
     // private String qManagerName = "LD01";
-    // private String hostName = "ec2-75-101-185-250.compute-1.amazonaws.com";
+    
+    private String hostName = "ec2-54-211-72-194.compute-1.amazonaws.com";
     // private String channelName = "SYSTEM.DEF.SVRCONN";
     // private String hostName = "ec2-75-101-131-40.compute-1.amazonaws.com"; //75.101.131.40";
     // private String hostName = "184.73.219.202";
     // private String qManagerName = "FP01";
-    // private String channelName = "SYSTEM.DEF.SVRCONN";
-    private String hostName = "mturk.nebulent.com";
-    private String qManagerName = "FP02";
-    private String channelName = "SYSTEM.DEF.SVRCONN";
-    private int port = 1415;
-    private String queueName = "SYSTEM.ADMIN.CONFIG.EVENT";
+    private String channelName = "QFLEX01.SVRCONN";
+    //private String hostName = "mturk.nebulent.com";
+    //private String qManagerName = "FP02";
+    private String qManagerName = "NF01";
+    //private String channelName = "QFLEX";
+    private int port = 1414;
+    //private String queueName = "SYSTEM.ADMIN.CONFIG.EVENT";
+    private String queueName = "VIDEO_XML_IN";
 
     @Before
     public void setUp() {
@@ -94,7 +97,7 @@ public class IBMPCFMqQmanagerManagerTest extends PCFMessageAgent {
     /*
      * Test method for 'org.netflexity.api.mq.impl.IBMPCFMqQmanagerManager.getAllQueues()'
      */
-    // @Test
+    @Test
     public void testGetAllQueues() {
 	try {
 	    List queues = manager.getAllQueues();
@@ -122,7 +125,7 @@ public class IBMPCFMqQmanagerManagerTest extends PCFMessageAgent {
      * Once all queue managers connected, a chart should be created where all
      * queue managers are drawn and connected using lines.
      */
-    // @Test
+    @Test
     public void getAllChannels() {
 	System.out.println("<getAllChannels>");
 
@@ -184,8 +187,8 @@ public class IBMPCFMqQmanagerManagerTest extends PCFMessageAgent {
     private void describeChannel(MqChannel ch) {
 	System.out.println("----------------------------------------------------------------------");
 	System.out.println("server channel : " + ch.getChannelName());
-	// System.out.println("getAlterationDate :\t" + ch.getAlterationDate());
-	// System.out.println("getAlterationTime: \t" + ch.getAlterationTime());
+	 System.out.println("getAlterationDate :\t" + ch.getAlterationDate());
+	 System.out.println("getAlterationTime: \t" + ch.getAlterationTime());
 	// System.out.println("getBatchInterval: \t" + ch.getBatchInterval());
 	// System.out.println("getBatchSize: \t" + ch.getBatchSize());
 	// System.out.println("getChannelDesc: \t" + ch.getChannelDesc());

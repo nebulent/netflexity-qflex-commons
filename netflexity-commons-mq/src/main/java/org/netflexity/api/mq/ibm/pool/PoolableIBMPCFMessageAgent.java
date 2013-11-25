@@ -11,6 +11,7 @@
 package org.netflexity.api.mq.ibm.pool;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 import org.apache.log4j.Logger;
 
@@ -23,7 +24,6 @@ import com.ibm.mq.pcf.MQCFIN;
 import com.ibm.mq.pcf.MQCFST;
 import com.ibm.mq.pcf.PCFMessageAgent;
 import com.ibm.mq.pcf.PCFParameter;
-import java.lang.reflect.Field;
 
 /**
  * @author FEDORMAX

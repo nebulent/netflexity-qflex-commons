@@ -10,9 +10,10 @@
  */
 package org.netflexity.api.mq;
 
-import com.ibm.mq.MQMessage;
 import java.io.Serializable;
 import java.util.List;
+
+import com.ibm.mq.MQMessage;
 
 /**
  * Common interface for all types of AbstractMqQmanagerManager (PCF, MQSC)

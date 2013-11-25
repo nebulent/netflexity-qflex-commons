@@ -12,12 +12,12 @@ package org.netflexity.api.mq;
 
 import java.io.Serializable;
 
+import org.netflexity.api.mq.ibm.enums.MqMessageHeaderCOAReportOptionTypeEnum;
 import org.netflexity.api.mq.ibm.enums.MqMessageHeaderCODReportOptionTypeEnum;
 import org.netflexity.api.mq.ibm.enums.MqMessageHeaderExceptionReportOptionTypeEnum;
 import org.netflexity.api.mq.ibm.enums.MqMessageHeaderExpirationReportOptionTypeEnum;
 import org.netflexity.api.mq.ibm.enums.MqMessageHeaderMessageTypeEnum;
 import org.netflexity.api.mq.ibm.enums.MqMessageHeaderPersistenceTypeEnum;
-import org.netflexity.api.mq.ibm.enums.MqMessageHeaderCOAReportOptionTypeEnum;
 import org.netflexity.api.mq.ibm.enums.MqMessageHeaderSegmentTypeEnum;
 
 public interface MqMessageHeader extends Serializable{

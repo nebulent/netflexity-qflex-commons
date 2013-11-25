@@ -13,7 +13,6 @@ package org.netflexity.api.mq.jms.p2p;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.QueueConnection;
-import javax.jms.QueueConnectionFactory;
 
 import org.netflexity.api.mq.jms.AbstractJMSConnectionFactory;
 

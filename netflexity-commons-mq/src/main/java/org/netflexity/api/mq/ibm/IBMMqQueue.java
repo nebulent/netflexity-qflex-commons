@@ -80,8 +80,8 @@ public class IBMMqQueue extends AbstractIBMMqObject implements MqQueue{
      * @see org.netflexity.api.mq.MqQueue#getDefBind()
      */
     @Override
-    public String getDefBind() {
-        return getAttributeAsString(MqQueueAttributeEnum.DEF_BIND);
+    public Integer getDefBind() {
+        return getAttributeAsInteger(MqQueueAttributeEnum.DEF_BIND);
     }
 
     /* (non-Javadoc)
