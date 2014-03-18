@@ -118,9 +118,9 @@ public class PoolableIBMMqConnectionFactory implements KeyedPoolableObjectFactor
             }
             if (StringUtils.isNotBlank(poolKey.getSslCipherSpec()) && (StringUtils.isNotBlank(poolKey.getSslKeyStore()) || StringUtils.isNotBlank(poolKey.getSslTrustStore()))) {
                 MQEnvironment.sslFipsRequired = (WebsphereSSLCipherSpecEnum.TLS_RSA_WITH_3DES_EDE_CBC_SHA.getName().equals(poolKey.getSslCipherSpec())
-                        || WebsphereSSLCipherSpecEnum.TLS_RSA_WITH_3DES_EDE_CBC_SHA.getName().equals(poolKey.getSslCipherSpec())
-                        || WebsphereSSLCipherSpecEnum.TLS_RSA_WITH_3DES_EDE_CBC_SHA.getName().equals(poolKey.getSslCipherSpec())
-                        || WebsphereSSLCipherSpecEnum.TLS_RSA_WITH_3DES_EDE_CBC_SHA.getName().equals(poolKey.getSslCipherSpec()));
+                        || WebsphereSSLCipherSpecEnum.TLS_RSA_WITH_AES_128_CBC_SHA.getName().equals(poolKey.getSslCipherSpec())
+                        || WebsphereSSLCipherSpecEnum.TLS_RSA_WITH_AES_256_CBC_SHA.getName().equals(poolKey.getSslCipherSpec())
+                        );
                 MQEnvironment.properties.put(MQC.SSL_CIPHER_SUITE_PROPERTY, poolKey.getSslCipherSpec());
             }
             if (StringUtils.isNotBlank(poolKey.getSslPeerName())) {
